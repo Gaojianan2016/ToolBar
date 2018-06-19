@@ -15,6 +15,8 @@ import android.widget.TextView;
  */
 
 public class TitleBar extends ToolBar {
+    private static final String TAG = "TitleBar";
+
     private String title;
     private int leftImage;
     private int rightImage;

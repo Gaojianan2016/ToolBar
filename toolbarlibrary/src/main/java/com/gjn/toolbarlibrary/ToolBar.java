@@ -2,17 +2,12 @@ package com.gjn.toolbarlibrary;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 /**
  * Created by gjn on 2018/6/15.
@@ -60,7 +55,7 @@ public class ToolBar extends LinearLayout {
         RightView = createViewById(rightId);
     }
 
-    public void create(){
+    public void create() {
         setOrientation(HORIZONTAL);
         removeAllViews();
 
@@ -106,49 +101,49 @@ public class ToolBar extends LinearLayout {
         return (T) LeftView;
     }
 
+    public void setLeftView(int id) {
+        leftId = id;
+        LeftView = createViewById(leftId);
+        create();
+    }
+
     public <T extends View> T getCenterView() {
         return (T) CenterView;
+    }
+
+    public void setCenterView(int id) {
+        centerId = id;
+        CenterView = createViewById(centerId);
+        create();
     }
 
     public <T extends View> T getRightView() {
         return (T) RightView;
     }
 
-    public void setLeftView(View view){
-        LeftView = view;
-        create();
-    }
-
-    public void setLeftView(int id){
-        leftId = id;
-        LeftView = createViewById(leftId);
-        create();
-    }
-
-    public void setCenterView(View view){
-        CenterView = view;
-        create();
-    }
-
-    public void setCenterView(int id){
-        centerId = id;
-        CenterView = createViewById(centerId);
-        create();
-    }
-
-    public void setRightView(View view){
-        RightView = view;
-        create();
-    }
-
-    public void setRightView(int id){
+    public void setRightView(int id) {
         rightId = id;
         RightView = createViewById(rightId);
         create();
     }
 
-    private View createViewById(int id){
-        if(id > 0){
+    public void setLeftView(View view) {
+        LeftView = view;
+        create();
+    }
+
+    public void setCenterView(View view) {
+        CenterView = view;
+        create();
+    }
+
+    public void setRightView(View view) {
+        RightView = view;
+        create();
+    }
+
+    private View createViewById(int id) {
+        if (id > 0) {
             return LayoutInflater.from(getContext()).inflate(id, null);
         }
         return null;
