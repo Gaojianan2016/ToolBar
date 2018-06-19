@@ -16,6 +16,11 @@ dependencies {
 }
 ```
 
+------------------------
+
+# 基本使用
+Activity
+
 ```
 package com.gjn.toolbar;
 
@@ -42,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
+
+xml
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -79,7 +86,9 @@ public class MainActivity extends AppCompatActivity {
 
 ```
 
-基本属性说明
+---------------------
+
+ # 基本属性说明
 - **ToolBar**
 
 |属性|使用|说明|
