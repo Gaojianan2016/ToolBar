@@ -10,7 +10,22 @@
         android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        app:centerViewId="@layout/header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.gjn.toolbarlibrary.TitleBar
+        android:id="@+id/bar2"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        app:title="@string/app_name"
+        app:leftImage="@mipmap/ic_launcher_round"
+        app:rightImage="@mipmap/ic_launcher"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bar" />
+
+
 </android.support.constraint.ConstraintLayout>

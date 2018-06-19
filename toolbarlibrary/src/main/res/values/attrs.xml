@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="ToolBar">
-        <attr name="leftView" format="reference" />
-        <attr name="centerView" format="reference" />
-        <attr name="rightView" format="reference" />
+    <declare-styleable name="myToolBar">
+        <attr name="leftViewId" format="reference" />
+        <attr name="centerViewId" format="reference" />
+        <attr name="rightViewId" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="TitleBar">
         <attr name="title" format="string" />
+        <attr name="leftImage" format="reference" />
+        <attr name="rightImage" format="reference" />
     </declare-styleable>
 </resources>
