@@ -18,6 +18,8 @@ public class TitleBar extends ToolBar {
     private static final String TAG = "TitleBar";
 
     private String title;
+    private String leftText;
+    private String rightText;
     private int leftImage;
     private int rightImage;
 
@@ -34,6 +36,8 @@ public class TitleBar extends ToolBar {
         if (attrs != null) {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TitleBar, defStyleAttr, 0);
             title = ta.getString(R.styleable.TitleBar_title);
+            leftText = ta.getString(R.styleable.TitleBar_leftText);
+            rightText = ta.getString(R.styleable.TitleBar_rightText);
             leftImage = ta.getResourceId(R.styleable.TitleBar_leftImage, -1);
             rightImage = ta.getResourceId(R.styleable.TitleBar_rightImage, -1);
             ta.recycle();
@@ -50,6 +54,18 @@ public class TitleBar extends ToolBar {
             center.setText(title);
             center.setGravity(Gravity.CENTER);
             CenterView = center;
+        }
+        if (!TextUtils.isEmpty(leftText)) {
+            TextView left = new TextView(getContext());
+            left.setText(leftText);
+            left.setGravity(Gravity.CENTER);
+            LeftView = left;
+        }
+        if (!TextUtils.isEmpty(rightText)) {
+            TextView right = new TextView(getContext());
+            right.setText(rightText);
+            right.setGravity(Gravity.CENTER);
+            RightView = right;
         }
         if (leftImage > 0) {
             ImageView left = new ImageView(getContext());
