@@ -54,13 +54,11 @@ public class TitleBar extends ToolBar {
         if (leftImage > 0) {
             ImageView left = new ImageView(getContext());
             left.setImageResource(leftImage);
-//            left.setScaleType(ImageView.ScaleType.CENTER_CROP);
             LeftView = left;
         }
         if (rightImage > 0) {
             ImageView right = new ImageView(getContext());
             right.setImageResource(rightImage);
-//            right.setScaleType(ImageView.ScaleType.CENTER_CROP);
             RightView = right;
         }
     }
