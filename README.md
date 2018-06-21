@@ -12,7 +12,7 @@ allprojects {
 
 
 dependencies {
-    implementation 'com.github.Gaojianan2016:ToolBar:1.0.3'
+    implementation 'com.github.Gaojianan2016:ToolBar:1.0.4'
 }
 ```
 
@@ -109,4 +109,5 @@ xml
 |rightText(string)|app:rightText|设置titlebar右边文字|
 
 **注：文字会被图片覆盖**
+**    当设置isPaddingTopBar之后将无视设置PaddingTop**
 
