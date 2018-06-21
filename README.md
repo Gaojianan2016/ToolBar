@@ -93,20 +93,20 @@ xml
 
 |属性|使用|说明|
 |-|-|-|
-|leftViewId|app:leftViewId|设置toolbar左边view|
-|centerViewId|app:centerViewId|设置toolbar中间view|
-|rightViewId|app:rightViewId|设置toolbar右边view|
-
+|leftViewId(res)|app:leftViewId|设置toolbar左边view|
+|centerViewId(res)|app:centerViewId|设置toolbar中间view|
+|rightViewId(res)|app:rightViewId|设置toolbar右边view|
+|isPaddingTopBar(boolean)|app:isPaddingTopBar|为toolbar顶部添加一状态栏高度的padding|
 
 - **TitleBar**
 
 |属性|使用|说明|
 |-|-|-|
-|title|app:title|设置titlebar标题|
-|leftImage|app:leftImage|设置titlebar左边图片|
-|rightImage|app:rightImage|设置titlebar右边图片|
-|leftText|app:leftText|设置titlebar左边文字|
-|rightText|app:rightText|设置titlebar右边文字|
+|title(string)|app:title|设置titlebar标题|
+|leftImage(res)|app:leftImage|设置titlebar左边图片|
+|rightImage(res)|app:rightImage|设置titlebar右边图片|
+|leftText(string)|app:leftText|设置titlebar左边文字|
+|rightText(string)|app:rightText|设置titlebar右边文字|
 
 **注：文字会被图片覆盖**
 
