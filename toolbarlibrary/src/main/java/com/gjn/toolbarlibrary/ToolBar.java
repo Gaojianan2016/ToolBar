@@ -88,14 +88,13 @@ public class ToolBar extends LinearLayout {
         }
 
         int left = getPaddingLeft();
-        int top = 0;
         int right = getPaddingRight();
         int bottom = getPaddingBottom();
 
         if (isPaddingTopBar) {
             setPadding(left, getBarHeight(), right, bottom);
         } else {
-            setPadding(left, top, right, bottom);
+            setPadding(left, 0, right, bottom);
         }
     }
 
@@ -129,6 +128,11 @@ public class ToolBar extends LinearLayout {
         return (T) LeftView;
     }
 
+    public void setLeftView(View view) {
+        LeftView = view;
+        create();
+    }
+
     public void setLeftView(int id) {
         leftId = id;
         LeftView = createViewById(leftId);
@@ -137,6 +141,11 @@ public class ToolBar extends LinearLayout {
 
     public <T extends View> T getCenterView() {
         return (T) CenterView;
+    }
+
+    public void setCenterView(View view) {
+        CenterView = view;
+        create();
     }
 
     public void setCenterView(int id) {
@@ -149,24 +158,14 @@ public class ToolBar extends LinearLayout {
         return (T) RightView;
     }
 
+    public void setRightView(View view) {
+        RightView = view;
+        create();
+    }
+
     public void setRightView(int id) {
         rightId = id;
         RightView = createViewById(rightId);
-        create();
-    }
-
-    public void setLeftView(View view) {
-        LeftView = view;
-        create();
-    }
-
-    public void setCenterView(View view) {
-        CenterView = view;
-        create();
-    }
-
-    public void setRightView(View view) {
-        RightView = view;
         create();
     }
 
