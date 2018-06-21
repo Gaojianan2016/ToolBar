@@ -18,8 +18,7 @@
     <com.gjn.toolbarlibrary.TitleBar
         android:id="@+id/bar2"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="75dp"
         app:title="@string/app_name"
         app:leftText="返回"
         app:rightText="自定义"

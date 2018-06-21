@@ -24,6 +24,8 @@ public class ToolBar extends LinearLayout {
     protected int centerId;
     protected int rightId;
 
+    protected boolean isPaddingTopBar;
+
     protected OnClickListener leftOnClickListener;
     protected OnClickListener centerOnClickListener;
     protected OnClickListener rightOnClickListener;
@@ -43,6 +45,7 @@ public class ToolBar extends LinearLayout {
             leftId = ta.getResourceId(R.styleable.myToolBar_leftViewId, -1);
             centerId = ta.getResourceId(R.styleable.myToolBar_centerViewId, -1);
             rightId = ta.getResourceId(R.styleable.myToolBar_rightViewId, -1);
+            isPaddingTopBar = ta.getBoolean(R.styleable.myToolBar_isPaddingTopBar, false);
             ta.recycle();
         }
         init();
@@ -83,6 +86,17 @@ public class ToolBar extends LinearLayout {
                 RightView.setOnClickListener(rightOnClickListener);
             }
         }
+
+        if (isPaddingTopBar) {
+            setPadding(0, getBarHeight(), 0, 0);
+        } else {
+            setPadding(0, 0, 0, 0);
+        }
+    }
+
+    private int getBarHeight() {
+        int barId = getContext().getResources().getIdentifier("status_bar_height", "dimen", "android");
+        return getContext().getResources().getDimensionPixelSize(barId);
     }
 
     public void setLeftOnClickListener(OnClickListener leftOnClickListener) {
@@ -95,6 +109,15 @@ public class ToolBar extends LinearLayout {
 
     public void setRightOnClickListener(OnClickListener rightOnClickListener) {
         this.rightOnClickListener = rightOnClickListener;
+    }
+
+    public boolean isPaddingTopBar() {
+        return isPaddingTopBar;
+    }
+
+    public void setPaddingTopBar(boolean paddingTopBar) {
+        isPaddingTopBar = paddingTopBar;
+        create();
     }
 
     public <T extends View> T getLeftView() {
