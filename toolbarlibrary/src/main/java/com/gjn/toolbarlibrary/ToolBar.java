@@ -87,10 +87,15 @@ public class ToolBar extends LinearLayout {
             }
         }
 
+        int left = getPaddingLeft();
+        int top = getPaddingTop();
+        int right = getPaddingRight();
+        int bottom = getPaddingBottom();
+
         if (isPaddingTopBar) {
-            setPadding(0, getBarHeight(), 0, 0);
+            setPadding(left, getBarHeight() + top, right, bottom);
         } else {
-            setPadding(0, 0, 0, 0);
+            setPadding(left, top, right, bottom);
         }
     }
 
