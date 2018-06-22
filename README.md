@@ -109,5 +109,5 @@ xml
 |rightText(string)|app:rightText|设置titlebar右边文字|
 
 **注：文字会被图片覆盖**
-**    当设置isPaddingTopBar之后将无视设置PaddingTop**
+**当设置isPaddingTopBar之后将无视设置PaddingTop**
 
