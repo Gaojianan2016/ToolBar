@@ -25,6 +25,7 @@ public class ToolBar extends LinearLayout {
     protected int rightId;
 
     protected boolean isPaddingTopBar;
+    protected int defaultTop;
 
     protected OnClickListener leftOnClickListener;
     protected OnClickListener centerOnClickListener;
@@ -88,13 +89,18 @@ public class ToolBar extends LinearLayout {
         }
 
         int left = getPaddingLeft();
+        int top = getPaddingTop();
         int right = getPaddingRight();
         int bottom = getPaddingBottom();
+
+        if (defaultTop == 0 && top > 0) {
+            defaultTop = top;
+        }
 
         if (isPaddingTopBar) {
             setPadding(left, getBarHeight(), right, bottom);
         } else {
-            setPadding(left, 0, right, bottom);
+            setPadding(left, defaultTop, right, bottom);
         }
     }
 

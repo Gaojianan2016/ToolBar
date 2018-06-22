@@ -20,6 +20,7 @@
         android:id="@+id/bar2"
         android:layout_width="0dp"
         android:layout_height="75dp"
+        android:paddingTop="10dp"
         app:title="@string/app_name"
         app:leftText="返回"
         app:rightText="自定义"
