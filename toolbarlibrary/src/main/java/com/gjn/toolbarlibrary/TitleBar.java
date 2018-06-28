@@ -23,6 +23,17 @@ public class TitleBar extends ToolBar {
     private int leftImage;
     private int rightImage;
 
+    private int titleTextColor;
+    private int leftTextColor;
+    private int rightTextColor;
+
+    private int titleTextSize;
+    private int leftTextSize;
+    private int rightTextSize;
+
+    private int left_paddingLeft;
+    private int right_paddingRight;
+
     public TitleBar(@NonNull Context context) {
         this(context, null);
     }
@@ -35,11 +46,23 @@ public class TitleBar extends ToolBar {
         super(context, attrs, defStyleAttr);
         if (attrs != null) {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TitleBar, defStyleAttr, 0);
+
             title = ta.getString(R.styleable.TitleBar_title);
             leftText = ta.getString(R.styleable.TitleBar_leftText);
             rightText = ta.getString(R.styleable.TitleBar_rightText);
             leftImage = ta.getResourceId(R.styleable.TitleBar_leftImage, -1);
             rightImage = ta.getResourceId(R.styleable.TitleBar_rightImage, -1);
+
+            titleTextColor = ta.getColor(R.styleable.TitleBar_titleTextColor, -1);
+            leftTextColor = ta.getColor(R.styleable.TitleBar_leftTextColor, -1);
+            rightTextColor = ta.getColor(R.styleable.TitleBar_rightTextColor, -1);
+
+            titleTextSize = (int) ta.getDimension(R.styleable.TitleBar_titleTextSize, -1);
+            leftTextSize = (int) ta.getDimension(R.styleable.TitleBar_leftTextSize, -1);
+            rightTextSize = (int) ta.getDimension(R.styleable.TitleBar_rightTextSize, -1);
+
+            left_paddingLeft = (int) ta.getDimension(R.styleable.TitleBar_left_paddingLeft, 0);
+            right_paddingRight = (int) ta.getDimension(R.styleable.TitleBar_right_paddingRight, 0);
             ta.recycle();
         }
         init();
@@ -52,18 +75,36 @@ public class TitleBar extends ToolBar {
         if (!TextUtils.isEmpty(title)) {
             TextView center = new TextView(getContext());
             center.setText(title);
+            if (titleTextColor != -1) {
+                center.setTextColor(titleTextColor);
+            }
+            if (titleTextSize != -1) {
+                center.setTextSize(titleTextSize);
+            }
             center.setGravity(Gravity.CENTER);
             CenterView = center;
         }
         if (!TextUtils.isEmpty(leftText)) {
             TextView left = new TextView(getContext());
             left.setText(leftText);
+            if (leftTextColor != -1) {
+                left.setTextColor(leftTextColor);
+            }
+            if (leftTextSize != -1) {
+                left.setTextSize(leftTextSize);
+            }
             left.setGravity(Gravity.CENTER);
             LeftView = left;
         }
         if (!TextUtils.isEmpty(rightText)) {
             TextView right = new TextView(getContext());
             right.setText(rightText);
+            if (rightTextColor != -1) {
+                right.setTextColor(rightTextColor);
+            }
+            if (rightTextSize != -1) {
+                right.setTextSize(rightTextSize);
+            }
             right.setGravity(Gravity.CENTER);
             RightView = right;
         }
@@ -76,6 +117,18 @@ public class TitleBar extends ToolBar {
             ImageView right = new ImageView(getContext());
             right.setImageResource(rightImage);
             RightView = right;
+        }
+
+        if (left_paddingLeft > 0) {
+            if (LeftView != null) {
+                LeftView.setPadding((int) left_paddingLeft, 0, 0, 0);
+            }
+        }
+
+        if (right_paddingRight > 0) {
+            if (RightView != null) {
+                RightView.setPadding(0, 0, (int) right_paddingRight, 0);
+            }
         }
     }
 }

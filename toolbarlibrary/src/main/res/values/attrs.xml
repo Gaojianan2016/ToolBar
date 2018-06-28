@@ -13,5 +13,13 @@
         <attr name="rightImage" format="reference" />
         <attr name="leftText" format="string" />
         <attr name="rightText" format="string" />
+        <attr name="titleTextColor" format="color" />
+        <attr name="leftTextColor" format="color" />
+        <attr name="rightTextColor" format="color" />
+        <attr name="titleTextSize" format="dimension" />
+        <attr name="leftTextSize" format="dimension" />
+        <attr name="rightTextSize" format="dimension" />
+        <attr name="left_paddingLeft" format="dimension" />
+        <attr name="right_paddingRight" format="dimension" />
     </declare-styleable>
 </resources>

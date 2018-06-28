@@ -102,6 +102,30 @@ public class ToolBar extends LinearLayout {
         } else {
             setPadding(left, defaultTop, right, bottom);
         }
+
+        if (getChildCount() == 2) {
+            if (CenterView != null) {
+                if (LeftView != null) {
+                    LeftView.measure(0, 0);
+                    int w = LeftView.getMeasuredWidth();
+                    CenterView.setPadding(0, 0, w, 0);
+                } else {
+                    RightView.measure(0, 0);
+                    int w = RightView.getMeasuredWidth();
+                    CenterView.setPadding(w, 0, 0, 0);
+                }
+            }
+        } else if (getChildCount() == 3) {
+            LeftView.measure(0, 0);
+            RightView.measure(0, 0);
+            int lw = LeftView.getMeasuredWidth();
+            int rw = RightView.getMeasuredWidth();
+            if (lw - rw > 0) {
+                CenterView.setPadding(0, 0, lw - rw, 0);
+            } else {
+                CenterView.setPadding(rw - lw, 0, 0, 0);
+            }
+        }
     }
 
     private int getBarHeight() {
@@ -134,24 +158,19 @@ public class ToolBar extends LinearLayout {
         return (T) LeftView;
     }
 
-    public void setLeftView(View view) {
-        LeftView = view;
-        create();
-    }
-
     public void setLeftView(int id) {
         leftId = id;
         LeftView = createViewById(leftId);
         create();
     }
 
-    public <T extends View> T getCenterView() {
-        return (T) CenterView;
+    public void setLeftView(View view) {
+        LeftView = view;
+        create();
     }
 
-    public void setCenterView(View view) {
-        CenterView = view;
-        create();
+    public <T extends View> T getCenterView() {
+        return (T) CenterView;
     }
 
     public void setCenterView(int id) {
@@ -160,18 +179,23 @@ public class ToolBar extends LinearLayout {
         create();
     }
 
-    public <T extends View> T getRightView() {
-        return (T) RightView;
+    public void setCenterView(View view) {
+        CenterView = view;
+        create();
     }
 
-    public void setRightView(View view) {
-        RightView = view;
-        create();
+    public <T extends View> T getRightView() {
+        return (T) RightView;
     }
 
     public void setRightView(int id) {
         rightId = id;
         RightView = createViewById(rightId);
+        create();
+    }
+
+    public void setRightView(View view) {
+        RightView = view;
         create();
     }
 

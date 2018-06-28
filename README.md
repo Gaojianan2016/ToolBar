@@ -12,7 +12,7 @@ allprojects {
 
 
 dependencies {
-    implementation 'com.github.Gaojianan2016:ToolBar:1.0.5'
+    implementation 'com.github.Gaojianan2016:ToolBar:1.0.6'
 }
 ```
 
@@ -24,14 +24,16 @@ Activity
 ```
 package com.gjn.toolbar;
 
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
 
 import com.gjn.toolbarlibrary.TitleBar;
 import com.gjn.toolbarlibrary.ToolBar;
 
 public class MainActivity extends AppCompatActivity {
+
+    private TitleBar bar2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +42,16 @@ public class MainActivity extends AppCompatActivity {
 
         ToolBar bar = findViewById(R.id.bar);
 
-        TitleBar bar2 = findViewById(R.id.bar2);
+        bar.getCenterView().setBackgroundColor(Color.LTGRAY);
 
-        TextView title = bar2.getCenterView();
-        title.setTextSize(20);
+        bar2 = findViewById(R.id.bar2);
+
+        bar2.getCenterView().setBackgroundColor(Color.GREEN);
+        bar2.getRightView().setBackgroundColor(Color.RED);
+
     }
 }
+
 ```
 
 xml
@@ -63,6 +69,7 @@ xml
         android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:visibility="gone"
         app:centerViewId="@layout/header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,18 +78,48 @@ xml
     <com.gjn.toolbarlibrary.TitleBar
         android:id="@+id/bar2"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="75dp"
+        android:paddingTop="10dp"
         app:title="@string/app_name"
-        app:leftText="返回"
         app:rightText="自定义"
-        app:rightImage="@mipmap/ic_launcher"
+        app:titleTextSize="10sp"
+        app:right_paddingRight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bar" />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="ToolBar"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.105" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="8dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.083" />
+
 
 </android.support.constraint.ConstraintLayout>
+
 
 ```
 
@@ -107,6 +144,14 @@ xml
 |rightImage(res)|app:rightImage|设置titlebar右边图片|
 |leftText(string)|app:leftText|设置titlebar左边文字|
 |rightText(string)|app:rightText|设置titlebar右边文字|
+|titleTextColor(color)|app:titleTextColor|设置title文字颜色|
+|leftTextColor(color)|app:leftTextColor|设置left文字颜色|
+|rightTextColor(color)|app:rightTextColor|设置right文字颜色|
+|titleTextSize(dimension)|app:titleTextSize|设置title文字大小 sp|
+|leftTextSize(dimension)|app:leftTextSize|设置left文字大小 sp|
+|rightTextSize(dimension)|app:rightTextSize|设置right文字大小 sp|
+|left_paddingLeft(dimension)|app:left_paddingLeft|设置leftpadding dp|
+|right_paddingRight(dimension)|app:right_paddingRight|设置rightpadding dp|
 
 **注：文字会被图片覆盖**
 **当设置isPaddingTopBar之后将无视设置PaddingTop**
