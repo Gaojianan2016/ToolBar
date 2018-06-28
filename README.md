@@ -12,7 +12,7 @@ allprojects {
 
 
 dependencies {
-    implementation 'com.github.Gaojianan2016:ToolBar:1.0.6'
+    implementation 'com.github.Gaojianan2016:ToolBar:1.0.7'
 }
 ```
 
@@ -134,6 +134,10 @@ xml
 |centerViewId(res)|app:centerViewId|设置toolbar中间view|
 |rightViewId(res)|app:rightViewId|设置toolbar右边view|
 |isPaddingTopBar(boolean)|app:isPaddingTopBar|为toolbar顶部添加一状态栏高度的padding|
+|left_width(dimension)|app:left_width|为leftview添加宽度|
+|left_height(dimension)|app:left_height|为leftview添加高度|
+|right_width(dimension)|app:right_width|为rightview添加宽度|
+|right_height(dimension)|app:right_height|为rightview添加高度|
 
 - **TitleBar**
 

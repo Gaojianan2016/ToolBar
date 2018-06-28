@@ -5,6 +5,10 @@
         <attr name="centerViewId" format="reference" />
         <attr name="rightViewId" format="reference" />
         <attr name="isPaddingTopBar" format="boolean" />
+        <attr name="left_width" format="dimension" />
+        <attr name="left_height" format="dimension" />
+        <attr name="right_width" format="dimension" />
+        <attr name="right_height" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="TitleBar">

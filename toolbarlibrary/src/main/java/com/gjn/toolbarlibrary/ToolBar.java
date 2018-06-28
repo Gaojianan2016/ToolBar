@@ -19,6 +19,11 @@ public class ToolBar extends LinearLayout {
     protected View LeftView;
     protected View CenterView;
     protected View RightView;
+    
+    private int left_width;
+    private int left_height;
+    private int right_width;
+    private int right_height;
 
     protected int leftId;
     protected int centerId;
@@ -47,8 +52,14 @@ public class ToolBar extends LinearLayout {
             centerId = ta.getResourceId(R.styleable.myToolBar_centerViewId, -1);
             rightId = ta.getResourceId(R.styleable.myToolBar_rightViewId, -1);
             isPaddingTopBar = ta.getBoolean(R.styleable.myToolBar_isPaddingTopBar, false);
+            
+            left_width = (int) ta.getDimension(R.styleable.myToolBar_left_width, LayoutParams.WRAP_CONTENT);
+            left_height = (int) ta.getDimension(R.styleable.myToolBar_left_height, LayoutParams.MATCH_PARENT);
+            right_width = (int) ta.getDimension(R.styleable.myToolBar_right_width, LayoutParams.WRAP_CONTENT);
+            right_height = (int) ta.getDimension(R.styleable.myToolBar_right_height, LayoutParams.MATCH_PARENT);
             ta.recycle();
         }
+
         init();
         create();
     }
@@ -64,7 +75,7 @@ public class ToolBar extends LinearLayout {
         removeAllViews();
 
         if (LeftView != null) {
-            LeftView.setLayoutParams(setViewLayoutParams());
+            LeftView.setLayoutParams(setViewLayoutParams(left_width, left_height));
             addView(LeftView);
 
             if (leftOnClickListener != null) {
@@ -80,7 +91,7 @@ public class ToolBar extends LinearLayout {
             }
         }
         if (RightView != null) {
-            RightView.setLayoutParams(setViewLayoutParams());
+            RightView.setLayoutParams(setViewLayoutParams(right_width, right_height));
             addView(RightView);
 
             if (rightOnClickListener != null) {
