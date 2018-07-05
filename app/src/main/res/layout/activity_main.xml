@@ -22,6 +22,7 @@
         android:layout_height="75dp"
         android:paddingTop="10dp"
         app:title="@string/app_name"
+        app:leftText="sssss"
         app:rightImage="@mipmap/ic_launcher"
         app:right_width="70dp"
         app:titleTextSize="10sp"

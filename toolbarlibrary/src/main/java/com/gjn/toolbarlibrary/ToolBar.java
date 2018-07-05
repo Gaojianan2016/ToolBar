@@ -32,10 +32,6 @@ public class ToolBar extends LinearLayout {
     protected boolean isPaddingTopBar;
     protected int defaultTop;
 
-    protected OnClickListener leftOnClickListener;
-    protected OnClickListener centerOnClickListener;
-    protected OnClickListener rightOnClickListener;
-
     public ToolBar(@NonNull Context context) {
         this(context, null);
     }
@@ -77,26 +73,14 @@ public class ToolBar extends LinearLayout {
         if (LeftView != null) {
             LeftView.setLayoutParams(setViewLayoutParams(left_width, left_height));
             addView(LeftView);
-
-            if (leftOnClickListener != null) {
-                LeftView.setOnClickListener(leftOnClickListener);
-            }
         }
         if (CenterView != null) {
             CenterView.setLayoutParams(setViewLayoutParams(1));
             addView(CenterView);
-
-            if (centerOnClickListener != null) {
-                CenterView.setOnClickListener(centerOnClickListener);
-            }
         }
         if (RightView != null) {
             RightView.setLayoutParams(setViewLayoutParams(right_width, right_height));
             addView(RightView);
-
-            if (rightOnClickListener != null) {
-                RightView.setOnClickListener(rightOnClickListener);
-            }
         }
 
         int left = getPaddingLeft();
@@ -145,15 +129,21 @@ public class ToolBar extends LinearLayout {
     }
 
     public void setLeftOnClickListener(OnClickListener leftOnClickListener) {
-        this.leftOnClickListener = leftOnClickListener;
+        if (LeftView != null) {
+            LeftView.setOnClickListener(leftOnClickListener);
+        }
     }
 
     public void setCenterOnClickListener(OnClickListener centerOnClickListener) {
-        this.centerOnClickListener = centerOnClickListener;
+        if (CenterView != null) {
+            CenterView.setOnClickListener(centerOnClickListener);
+        }
     }
 
     public void setRightOnClickListener(OnClickListener rightOnClickListener) {
-        this.rightOnClickListener = rightOnClickListener;
+        if (RightView != null) {
+            RightView.setOnClickListener(rightOnClickListener);
+        }
     }
 
     public boolean isPaddingTopBar() {

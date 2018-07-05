@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -108,12 +109,12 @@ public class TitleBar extends ToolBar {
             right.setGravity(Gravity.CENTER);
             RightView = right;
         }
-        if (leftImage > 0) {
+        if (leftImage != -1) {
             ImageView left = new ImageView(getContext());
             left.setImageResource(leftImage);
             LeftView = left;
         }
-        if (rightImage > 0) {
+        if (rightImage != -1) {
             ImageView right = new ImageView(getContext());
             right.setImageResource(rightImage);
             RightView = right;
@@ -129,6 +130,27 @@ public class TitleBar extends ToolBar {
             if (RightView != null) {
                 RightView.setPadding(0, 0, (int) right_paddingRight, 0);
             }
+        }
+    }
+
+    public void setLeftText(String str){
+        Log.e("-s-", "leftImage = " + leftImage);
+        Log.e("-s-", "leftText = " + leftText);
+        Log.e("-s-", "getLeftView = " + getLeftView());
+        if (leftImage == -1 && getLeftView() != null) {
+            ((TextView) getLeftView()).setText(str);
+        }
+    }
+
+    public void setRightText(String str){
+        if (rightImage == -1 && getRightView() != null) {
+            ((TextView) getRightView()).setText(str);
+        }
+    }
+
+    public void setTitleText(String str){
+        if (getCenterView() != null) {
+            ((TextView) getCenterView()).setText(str);
         }
     }
 }
