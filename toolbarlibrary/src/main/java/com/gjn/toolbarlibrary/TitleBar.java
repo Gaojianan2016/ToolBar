@@ -32,8 +32,8 @@ public class TitleBar extends ToolBar {
     private int leftTextSize;
     private int rightTextSize;
 
-    private int left_paddingLeft;
-    private int right_paddingRight;
+    private int leftPaddingleft;
+    private int rightPaddingright;
 
     public TitleBar(@NonNull Context context) {
         this(context, null);
@@ -62,8 +62,8 @@ public class TitleBar extends ToolBar {
             leftTextSize = (int) ta.getDimension(R.styleable.TitleBar_leftTextSize, -1);
             rightTextSize = (int) ta.getDimension(R.styleable.TitleBar_rightTextSize, -1);
 
-            left_paddingLeft = (int) ta.getDimension(R.styleable.TitleBar_left_paddingLeft, 0);
-            right_paddingRight = (int) ta.getDimension(R.styleable.TitleBar_right_paddingRight, 0);
+            leftPaddingleft = (int) ta.getDimension(R.styleable.TitleBar_left_paddingLeft, 0);
+            rightPaddingright = (int) ta.getDimension(R.styleable.TitleBar_right_paddingRight, 0);
             ta.recycle();
         }
         init();
@@ -80,10 +80,10 @@ public class TitleBar extends ToolBar {
                 center.setTextColor(titleTextColor);
             }
             if (titleTextSize != -1) {
-                center.setTextSize(titleTextSize);
+                center.getPaint().setTextSize(titleTextSize);
             }
             center.setGravity(Gravity.CENTER);
-            CenterView = center;
+            centerView = center;
         }
         if (!TextUtils.isEmpty(leftText)) {
             TextView left = new TextView(getContext());
@@ -92,10 +92,10 @@ public class TitleBar extends ToolBar {
                 left.setTextColor(leftTextColor);
             }
             if (leftTextSize != -1) {
-                left.setTextSize(leftTextSize);
+                left.getPaint().setTextSize(leftTextSize);
             }
             left.setGravity(Gravity.CENTER);
-            LeftView = left;
+            leftView = left;
         }
         if (!TextUtils.isEmpty(rightText)) {
             TextView right = new TextView(getContext());
@@ -104,53 +104,53 @@ public class TitleBar extends ToolBar {
                 right.setTextColor(rightTextColor);
             }
             if (rightTextSize != -1) {
-                right.setTextSize(rightTextSize);
+                right.getPaint().setTextSize(rightTextSize);
             }
             right.setGravity(Gravity.CENTER);
-            RightView = right;
+            rightView = right;
         }
         if (leftImage != -1) {
             ImageView left = new ImageView(getContext());
             left.setImageResource(leftImage);
-            LeftView = left;
+            leftView = left;
         }
         if (rightImage != -1) {
             ImageView right = new ImageView(getContext());
             right.setImageResource(rightImage);
-            RightView = right;
+            rightView = right;
         }
 
-        if (left_paddingLeft > 0) {
-            if (LeftView != null) {
-                LeftView.setPadding((int) left_paddingLeft, 0, 0, 0);
+        if (leftPaddingleft > 0) {
+            if (leftView != null) {
+                leftView.setPadding(leftPaddingleft, 0, 0, 0);
             }
         }
 
-        if (right_paddingRight > 0) {
-            if (RightView != null) {
-                RightView.setPadding(0, 0, (int) right_paddingRight, 0);
+        if (rightPaddingright > 0) {
+            if (rightView != null) {
+                rightView.setPadding(0, 0, rightPaddingright, 0);
             }
         }
     }
 
     public void setLeftText(String str){
-        Log.e("-s-", "leftImage = " + leftImage);
-        Log.e("-s-", "leftText = " + leftText);
-        Log.e("-s-", "getLeftView = " + getLeftView());
         if (leftImage == -1 && getLeftView() != null) {
             ((TextView) getLeftView()).setText(str);
+            updataPadding();
         }
     }
 
     public void setRightText(String str){
         if (rightImage == -1 && getRightView() != null) {
             ((TextView) getRightView()).setText(str);
+            updataPadding();
         }
     }
 
     public void setTitleText(String str){
         if (getCenterView() != null) {
             ((TextView) getCenterView()).setText(str);
+            updataPadding();
         }
     }
 }

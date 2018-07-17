@@ -19,11 +19,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ToolBar bar = findViewById(R.id.bar);
-
         bar.getCenterView().setBackgroundColor(Color.LTGRAY);
 
         bar2 = findViewById(R.id.bar2);
 
+        bar2.getLeftView().setBackgroundColor(Color.BLUE);
         bar2.getCenterView().setBackgroundColor(Color.GREEN);
         bar2.getRightView().setBackgroundColor(Color.RED);
 
