@@ -2,6 +2,7 @@ package com.gjn.toolbarlibrary;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -54,9 +55,9 @@ public class TitleBar extends ToolBar {
             leftImage = ta.getResourceId(R.styleable.TitleBar_leftImage, -1);
             rightImage = ta.getResourceId(R.styleable.TitleBar_rightImage, -1);
 
-            titleTextColor = ta.getColor(R.styleable.TitleBar_titleTextColor, -1);
-            leftTextColor = ta.getColor(R.styleable.TitleBar_leftTextColor, -1);
-            rightTextColor = ta.getColor(R.styleable.TitleBar_rightTextColor, -1);
+            titleTextColor = ta.getColor(R.styleable.TitleBar_titleTextColor, 0);
+            leftTextColor = ta.getColor(R.styleable.TitleBar_leftTextColor, 0);
+            rightTextColor = ta.getColor(R.styleable.TitleBar_rightTextColor, 0);
 
             titleTextSize = (int) ta.getDimension(R.styleable.TitleBar_titleTextSize, -1);
             leftTextSize = (int) ta.getDimension(R.styleable.TitleBar_leftTextSize, -1);
@@ -66,6 +67,7 @@ public class TitleBar extends ToolBar {
             rightPaddingright = (int) ta.getDimension(R.styleable.TitleBar_right_paddingRight, 0);
             ta.recycle();
         }
+
         init();
         create();
     }
@@ -76,7 +78,7 @@ public class TitleBar extends ToolBar {
         if (!TextUtils.isEmpty(title)) {
             TextView center = new TextView(getContext());
             center.setText(title);
-            if (titleTextColor != -1) {
+            if (titleTextColor != 0) {
                 center.setTextColor(titleTextColor);
             }
             if (titleTextSize != -1) {
@@ -88,7 +90,7 @@ public class TitleBar extends ToolBar {
         if (!TextUtils.isEmpty(leftText)) {
             TextView left = new TextView(getContext());
             left.setText(leftText);
-            if (leftTextColor != -1) {
+            if (leftTextColor != 0) {
                 left.setTextColor(leftTextColor);
             }
             if (leftTextSize != -1) {
@@ -100,7 +102,7 @@ public class TitleBar extends ToolBar {
         if (!TextUtils.isEmpty(rightText)) {
             TextView right = new TextView(getContext());
             right.setText(rightText);
-            if (rightTextColor != -1) {
+            if (rightTextColor != 0) {
                 right.setTextColor(rightTextColor);
             }
             if (rightTextSize != -1) {
