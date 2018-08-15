@@ -2,6 +2,7 @@ package com.gjn.toolbarlibrary;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -31,8 +32,12 @@ public class ToolBar extends LinearLayout {
     protected int centerId;
     protected int rightId;
 
+    //是否设置一个通知栏高度topbar
     protected boolean isPaddingTopBar;
+    //设置过的topbar会被保存下来
     protected int defaultTop;
+    //是否展示LCR3个view的区域
+    protected boolean showLayout;
 
     public ToolBar(@NonNull Context context) {
         this(context, null);
@@ -55,6 +60,7 @@ public class ToolBar extends LinearLayout {
             leftHeight = (int) ta.getDimension(R.styleable.myToolBar_left_height, LayoutParams.MATCH_PARENT);
             rightWidth = (int) ta.getDimension(R.styleable.myToolBar_right_width, LayoutParams.WRAP_CONTENT);
             rightHeight = (int) ta.getDimension(R.styleable.myToolBar_right_height, LayoutParams.MATCH_PARENT);
+            showLayout = ta.getBoolean(R.styleable.myToolBar_show_layout, false);
             ta.recycle();
         }
 
@@ -74,14 +80,23 @@ public class ToolBar extends LinearLayout {
 
         if (leftView != null) {
             leftView.setLayoutParams(setViewLayoutParams(leftWidth, leftHeight));
+            if (showLayout) {
+                leftView.setBackgroundColor(Color.BLUE);
+            }
             addView(leftView);
         }
         if (centerView != null) {
             centerView.setLayoutParams(setViewLayoutParams(1));
+            if (showLayout) {
+                centerView.setBackgroundColor(Color.RED);
+            }
             addView(centerView);
         }
         if (rightView != null) {
             rightView.setLayoutParams(setViewLayoutParams(rightWidth, rightHeight));
+            if (showLayout) {
+                rightView.setBackgroundColor(Color.GREEN);
+            }
             addView(rightView);
         }
 
@@ -112,24 +127,16 @@ public class ToolBar extends LinearLayout {
         }else if (getChildCount() == 2) {
             if (centerView != null) {
                 if (leftView != null) {
-                    leftView.measure(0, 0);
-                    int w = leftView.getMeasuredWidth();
-                    centerView.setPadding(0, 0, w, 0);
+                    centerView.setPadding(0, 0, leftWidth, 0);
                 } else {
-                    rightView.measure(0, 0);
-                    int w = rightView.getMeasuredWidth();
-                    centerView.setPadding(w, 0, 0, 0);
+                    centerView.setPadding(rightWidth, 0, 0, 0);
                 }
             }
         } else if (getChildCount() == 3) {
-            leftView.measure(0, 0);
-            rightView.measure(0, 0);
-            int lw = leftView.getMeasuredWidth();
-            int rw = rightView.getMeasuredWidth();
-            if (lw - rw > 0) {
-                centerView.setPadding(0, 0, lw - rw, 0);
+            if (leftWidth - rightWidth > 0) {
+                centerView.setPadding(0, 0, leftWidth - rightWidth, 0);
             } else {
-                centerView.setPadding(rw - lw, 0, 0, 0);
+                centerView.setPadding(rightWidth - leftWidth, 0, 0, 0);
             }
         }
     }

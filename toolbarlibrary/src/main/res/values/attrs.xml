@@ -9,6 +9,7 @@
         <attr name="left_height" format="dimension" />
         <attr name="right_width" format="dimension" />
         <attr name="right_height" format="dimension" />
+        <attr name="show_layout" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="TitleBar">
