@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
         bar2 = findViewById(R.id.bar2);
 
-        bar2.getLeftView().setBackgroundColor(Color.BLUE);
-        bar2.getCenterView().setBackgroundColor(Color.GREEN);
-        bar2.getRightView().setBackgroundColor(Color.RED);
+//        bar2.getLeftView().setBackgroundColor(Color.BLUE);
+//        bar2.getCenterView().setBackgroundColor(Color.GREEN);
+//        bar2.getRightView().setBackgroundColor(Color.RED);
 
 //        bar2.setLeftText("你好是是是是");
 //        bar2.setRightText("什么东西xxxx");

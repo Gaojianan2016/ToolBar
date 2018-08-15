@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,22 +21,19 @@ public class ToolBar extends LinearLayout {
     protected View leftView;
     protected View centerView;
     protected View rightView;
-    
-    private int leftWidth;
-    private int leftHeight;
-    private int rightWidth;
-    private int rightHeight;
-
     protected int leftId;
     protected int centerId;
     protected int rightId;
-
     //是否设置一个通知栏高度topbar
     protected boolean isPaddingTopBar;
     //设置过的topbar会被保存下来
     protected int defaultTop;
     //是否展示LCR3个view的区域
     protected boolean showLayout;
+    private int leftWidth;
+    private int leftHeight;
+    private int rightWidth;
+    private int rightHeight;
 
     public ToolBar(@NonNull Context context) {
         this(context, null);
@@ -55,7 +51,7 @@ public class ToolBar extends LinearLayout {
             centerId = ta.getResourceId(R.styleable.myToolBar_centerViewId, -1);
             rightId = ta.getResourceId(R.styleable.myToolBar_rightViewId, -1);
             isPaddingTopBar = ta.getBoolean(R.styleable.myToolBar_isPaddingTopBar, false);
-            
+
             leftWidth = (int) ta.getDimension(R.styleable.myToolBar_left_width, LayoutParams.WRAP_CONTENT);
             leftHeight = (int) ta.getDimension(R.styleable.myToolBar_left_height, LayoutParams.MATCH_PARENT);
             rightWidth = (int) ta.getDimension(R.styleable.myToolBar_right_width, LayoutParams.WRAP_CONTENT);
@@ -118,13 +114,25 @@ public class ToolBar extends LinearLayout {
     }
 
     public void updataPadding() {
+        if (leftWidth < 0 && leftView != null) {
+            leftView.measure(0, 0);
+            if (leftView.getMeasuredWidth() > 0) {
+                leftWidth = leftView.getMeasuredWidth();
+            }
+        }
+        if (rightWidth < 0 && rightView != null) {
+            rightView.measure(0, 0);
+            if (rightView.getMeasuredWidth() > 0) {
+                rightWidth = rightView.getMeasuredWidth();
+            }
+        }
         if (getChildCount() == 1) {
             if (rightView != null) {
                 setGravity(Gravity.END | Gravity.TOP);
-            }else {
+            } else {
                 setGravity(Gravity.START | Gravity.TOP);
             }
-        }else if (getChildCount() == 2) {
+        } else if (getChildCount() == 2) {
             if (centerView != null) {
                 if (leftView != null) {
                     centerView.setPadding(0, 0, leftWidth, 0);
@@ -177,19 +185,24 @@ public class ToolBar extends LinearLayout {
         return (T) leftView;
     }
 
+    public void setLeftView(View view) {
+        leftView = view;
+        create();
+    }
+
     public void setLeftView(int id) {
         leftId = id;
         leftView = createViewById(leftId);
         create();
     }
 
-    public void setLeftView(View view) {
-        leftView = view;
-        create();
-    }
-
     public <T extends View> T getCenterView() {
         return (T) centerView;
+    }
+
+    public void setCenterView(View view) {
+        centerView = view;
+        create();
     }
 
     public void setCenterView(int id) {
@@ -198,23 +211,18 @@ public class ToolBar extends LinearLayout {
         create();
     }
 
-    public void setCenterView(View view) {
-        centerView = view;
-        create();
-    }
-
     public <T extends View> T getRightView() {
         return (T) rightView;
+    }
+
+    public void setRightView(View view) {
+        rightView = view;
+        create();
     }
 
     public void setRightView(int id) {
         rightId = id;
         rightView = createViewById(rightId);
-        create();
-    }
-
-    public void setRightView(View view) {
-        rightView = view;
         create();
     }
 
