@@ -31,12 +31,12 @@ public class MainActivity extends AppCompatActivity {
 //        bar2.setRightText("什么东西xxxx");
 //        bar2.setTitleText("标题");
 
-        bar2.setLeftOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "左边", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        bar2.setLeftOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(MainActivity.this, "左边", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         bar2.setRightOnClickListener(new View.OnClickListener() {
             @Override

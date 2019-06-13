@@ -1,5 +1,6 @@
 package com.gjn.toolbarlibrary;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -26,6 +27,8 @@ public class ToolBar extends LinearLayout {
     protected int rightId;
     //是否设置一个通知栏高度topbar
     protected boolean isPaddingTopBar;
+    //是否设置默认左边视图为关闭Activity
+    protected boolean leftIsFinish;
     //设置过的topbar会被保存下来
     protected int defaultTop;
     //是否展示LCR3个view的区域
@@ -51,7 +54,7 @@ public class ToolBar extends LinearLayout {
             centerId = ta.getResourceId(R.styleable.myToolBar_centerViewId, -1);
             rightId = ta.getResourceId(R.styleable.myToolBar_rightViewId, -1);
             isPaddingTopBar = ta.getBoolean(R.styleable.myToolBar_isPaddingTopBar, false);
-
+            leftIsFinish = ta.getBoolean(R.styleable.myToolBar_left_is_finish, false);
             leftWidth = (int) ta.getDimension(R.styleable.myToolBar_left_width, LayoutParams.WRAP_CONTENT);
             leftHeight = (int) ta.getDimension(R.styleable.myToolBar_left_height, LayoutParams.MATCH_PARENT);
             rightWidth = (int) ta.getDimension(R.styleable.myToolBar_right_width, LayoutParams.WRAP_CONTENT);
@@ -110,6 +113,16 @@ public class ToolBar extends LinearLayout {
         } else {
             setPadding(left, defaultTop, right, bottom);
         }
+
+        if (leftIsFinish) {
+            leftView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((Activity) getContext()).finish();
+                }
+            });
+        }
+
         updataPadding();
     }
 
