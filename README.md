@@ -1,5 +1,5 @@
 # ToolBar
-自定义ToolBar
+自定义ToolBar(androidx版本)
 
 ```
 allprojects {
@@ -12,7 +12,7 @@ allprojects {
 
 
 dependencies {
-    implementation 'com.github.Gaojianan2016:ToolBar:1.1.3'
+    implementation 'com.github.Gaojianan2016:ToolBar:1.0.0x'
 }
 ```
 
@@ -26,7 +26,10 @@ package com.gjn.toolbar;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.gjn.toolbarlibrary.TitleBar;
 import com.gjn.toolbarlibrary.ToolBar;
@@ -41,86 +44,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ToolBar bar = findViewById(R.id.bar);
-
         bar.getCenterView().setBackgroundColor(Color.LTGRAY);
 
         bar2 = findViewById(R.id.bar2);
 
-        bar2.getCenterView().setBackgroundColor(Color.GREEN);
-        bar2.getRightView().setBackgroundColor(Color.RED);
+//        bar2.getLeftView().setBackgroundColor(Color.BLUE);
+//        bar2.getCenterView().setBackgroundColor(Color.GREEN);
+//        bar2.getRightView().setBackgroundColor(Color.RED);
 
+//        bar2.setLeftText("我是左边");
+//        bar2.setRightText("我是右边");
+//        bar2.setTitleText("我是中间标题");
+
+        bar2.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "左边", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        bar2.setRightOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "右边", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
-
-```
-
-xml
-
-```
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.gjn.toolbar.MainActivity">
-
-    <com.gjn.toolbarlibrary.ToolBar
-        android:id="@+id/bar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:visibility="gone"
-        app:centerViewId="@layout/header"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.gjn.toolbarlibrary.TitleBar
-        android:id="@+id/bar2"
-        android:layout_width="0dp"
-        android:layout_height="75dp"
-        android:paddingTop="10dp"
-        app:title="@string/app_name"
-        app:rightText="自定义"
-        app:titleTextSize="10sp"
-        app:right_paddingRight="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bar" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="ToolBar"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.105" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="8dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.083" />
-
-
-</android.support.constraint.ConstraintLayout>
-
-
 ```
 
 ---------------------
