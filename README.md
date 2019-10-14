@@ -12,7 +12,7 @@ allprojects {
 
 
 dependencies {
-    implementation 'com.github.Gaojianan2016:ToolBar:1.0.0x'
+    implementation 'com.github.Gaojianan2016:ToolBar:1.0.1x'
 }
 ```
 
